@@ -31,7 +31,7 @@ router.get("/lastest", verifyToken, async (req, res) => {
     }
   ).sort({createdAt: -1}).limit(limit);
 
-
+  farms.reverse();
   res.json({ error: null, data: farms });
 })
 
