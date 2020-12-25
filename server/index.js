@@ -76,8 +76,8 @@ io.on("connection", (socket) => {
           // only send to client require the topic
           socket.emit(`${topicReceived.message}data`, dataDecrypted);
         }else if(data.type === 3 && data.deviceId === deviceInfo.deviceId){
-          const dataDecrypted = JSON.parse(decrypt(data.state, parsePrivateKey(deviceInfo.privateKey)));
-          socket.emit(`${topicReceived.message}state`, dataDecrypted);
+          const dataDecrypted = decrypt(data.state, parsePrivateKey(deviceInfo.privateKey));
+          socket.emit(`${topicReceived.message}state`, dataDecrypted.toString());
         }
       });
     } catch (err) {
