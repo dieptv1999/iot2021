@@ -40,7 +40,7 @@ router.post("/control", verifyToken, async (req, res) => {
         data = JSON.parse(data)
 
         //B3: Gửi dữ liệu vào HiveMQ
-        sendMessage("CONTROL/"+deviceInfo.deviceId, data);
+        sendMessage("CONTROL/"+deviceInfo.deviceId, JSON.stringify(data));
     }
 
     res.json({
