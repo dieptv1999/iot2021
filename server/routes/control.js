@@ -37,10 +37,10 @@ router.post("/control", verifyToken, async (req, res) => {
 
     if(await verifySignature(data, signature, publicKey)){
 
-        console.log("OK")
+        data = JSON.parse(data)
 
         //B3: Gửi dữ liệu vào HiveMQ
-        sendMessage("CONTROL/"+deviceInfo.deviceId, JSON.stringify(data));
+        sendMessage("CONTROL/"+deviceInfo.deviceId, data);
     }
 
     res.json({
