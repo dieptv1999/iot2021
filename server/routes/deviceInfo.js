@@ -16,6 +16,9 @@ router.post("/insertDatabase", async(req, res) => {
         publicKey: req.body.publicKey,
         privateKey: req.body.privateKey,
         expiredDate: req.body.expiredDate,
+        status: req.body.status,
+        userID: req.body.userID,
+        apiChannelKey: req.body.apiChannelKey
     })
 
     try {

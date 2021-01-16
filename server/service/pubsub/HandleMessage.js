@@ -13,7 +13,7 @@ const handle = async function(message) {
         let messageJson = JSON.parse(message.toString());
         switch (messageJson.type) {
             case 1:
-                if (messageJson.data.id) {
+                if (messageJson.data.id) { // device Id
                     authen(messageJson.data.id);
                 }
                 break;

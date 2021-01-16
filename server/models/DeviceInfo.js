@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const { Int32 } = require("mongodb");
+const { boolean } = require("joi");
 
 /**
  * TABLE(COLLECTION) DEVICE_INFO 
@@ -29,6 +31,17 @@ const deviceInfoSchema = mongoose.Schema({
     expiredDate: {
         type: Date,
         required: true,
+    },
+    status: {
+        type: Boolean,
+        required: true,
+    },
+    userID: {
+        type: String,
+        required: true,
+    },
+    apiChannelKey: {
+        type: String
     }
 })
 
@@ -40,6 +53,9 @@ const validateDeviceData = (data) => {
         publicKey: Joi.string(),
         privateKey: Joi.string(),
         expiredDate: Joi.date(),
+        status: Joi.boolean(),
+        userID: Joi.string(),
+        apiChannelKey: Joi.string()
     });
 
     return schema.validate(data);
